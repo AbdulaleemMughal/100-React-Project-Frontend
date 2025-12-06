@@ -32,7 +32,7 @@ export default function Home() {
               <span className="text-blue-600 font-semibold">
                 beginner-friendly projects
               </span>{" "}
-              built with HTML, CSS Javascript and ReactJS
+              built with ReactJS
             </p>
           </div>
           <div className="flex items-center gap-5 max-sm:flex-col">

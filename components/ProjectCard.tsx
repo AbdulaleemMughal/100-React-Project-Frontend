@@ -15,7 +15,7 @@ export const ProjectCard = ({ data }: ProjectCardProps) => {
       onClick={() => {
         router.push(`/project/${data._id}`);
       }}
-      className="group cursor-pointer col-span-3 p-6 border border-gray-200 shadow-lg rounded-3xl flex flex-col items-start max-lg:col-span-4 max-md:col-span-6 max-sm:col-span-12 hover:shadow-2xl "
+      className="group cursor-pointer col-span-3 p-6 border border-gray-200 shadow-lg transition-all duration-150 rounded-3xl flex flex-col items-start max-lg:col-span-4 max-md:col-span-6 max-sm:col-span-12 hover:shadow-2xl "
     >
       <div className="relative mb-4 max-sm:w-full">
         <img

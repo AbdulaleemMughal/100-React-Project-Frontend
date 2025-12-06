@@ -3,9 +3,12 @@
 import { GithubCard } from "@/components/GithubCard";
 import { LiveDemoCard } from "@/components/LiveDemoCard";
 import { ProjectDescription } from "@/components/ProjectDescription";
+import { BASE_URL } from "@/constants/baseUrl";
+import { ProjectPageSkeleton } from "@/skeleton/ProjectPageSkeleton";
 import { ProjectType } from "@/types/project.type";
 import { Badge } from "@/UI/Badge";
 import { Button } from "@/UI/Button";
+import axios from "axios";
 import { MoveRight } from "lucide-react";
 import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
@@ -14,18 +17,31 @@ import { useEffect, useState } from "react";
 const SingleProject = () => {
   const router = useRouter();
   const { projectId } = useParams();
+  const [loading, setLoading] = useState<boolean>(true);
   const [project, setProject] = useState<ProjectType | undefined>(
     {} as ProjectType
   );
 
   useEffect(() => {
-    // if (projectId) {
-    //   const filteredProject = projects.find(
-    //     (project) => project.id === Number(projectId)
-    //   );
-    //   setProject(filteredProject);
-    // }
+    (async () => {
+      try {
+        const res = await axios.get(BASE_URL + `/get-project/${projectId}`);
+        setProject(res.data.data);
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setLoading(false);
+      }
+    })();
   }, []);
+
+  if (loading) {
+    return (
+      <>
+        <ProjectPageSkeleton />
+      </>
+    );
+  }
 
   return (
     <>
@@ -39,7 +55,7 @@ const SingleProject = () => {
               className="mb-8"
             />
             <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold bg-linear-to-r from-gray-900 via-blue-800 to-purple-800 bg-clip-text text-transparent mb- leading-tight">
-              Temperature Converter
+              {project?.name}
             </h1>
             <h4 className="block text-base font-bold  xs:text-lg sm:text-xl md:text-2xl lg:text-3xl mt-2 text-gray-600">
               React Project

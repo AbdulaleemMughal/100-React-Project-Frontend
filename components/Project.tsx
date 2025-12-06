@@ -7,15 +7,23 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { BASE_URL } from "@/constants/baseUrl";
 import { ProjectType } from "@/types/project.type";
+import { ProjectCardSkeleton } from "@/skeleton/ProjectCardSkeleton";
 
 export const Projects = () => {
   const router = useRouter();
   const [projects, setProjects] = useState<ProjectType[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     (async () => {
-      const res = await axios.get(BASE_URL + "/get-project");
-      setProjects(res.data.data);
+      try {
+        const res = await axios.get(BASE_URL + "/get-project");
+        setProjects(res.data.data);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
     })();
   }, []);
 
@@ -38,9 +46,16 @@ export const Projects = () => {
           </p>
           <div className="mt-8 p-8 shadow-xl rounded-xl w-full max-sm:px-1 max-sm:py-2 max-sm:shadow-none">
             <div className="grid grid-cols-12 gap-4">
-              {projects.map((project) => {
+              {loading
+                ? Array.from({ length: 8 }).map((_, idx) => {
+                    return <ProjectCardSkeleton key={idx} />;
+                  })
+                : projects.map((project) => {
+                    return <ProjectCard data={project} key={project._id} />;
+                  })}
+              {/* {projects.map((project) => {
                 return <ProjectCard data={project} key={project._id} />;
-              })}
+              })} */}
             </div>
           </div>
           <div className="mt-10">

@@ -96,15 +96,15 @@ export const Footer = () => {
             <ul className="space-y-4">
               {links.map((link) => {
                 return (
-                  <li
+                  <Link
                     key={link.id}
-                    onClick={() => router.push(link.path)}
+                    href={link.path}
                     className="group font-[Inter] flex items-center cursor-pointer text-gray-600 hover:text-blue-600 transition-all duration-150"
                   >
                     {" "}
                     <span className="inline-block w-0 group-hover:w-4 h-0.5 bg-blue-500 transition-all duration-300 mr-0 group-hover:mr-3"></span>
                     {link.name}
-                  </li>
+                  </Link>
                 );
               })}
             </ul>
