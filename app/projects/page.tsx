@@ -1,0 +1,9 @@
+const ProjectPage = () => {
+    return (
+        <>
+            <h1>Hello Project Page</h1>
+        </>
+    );
+};
+
+export default ProjectPage;

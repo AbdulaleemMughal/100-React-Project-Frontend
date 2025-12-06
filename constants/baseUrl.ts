@@ -1,0 +1,1 @@
+export const BASE_URL = "https://100-react-project-backend.vercel.app"
