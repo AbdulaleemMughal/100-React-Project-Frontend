@@ -25,6 +25,11 @@ const links = [
     name: "Contact",
     path: "/contact",
   },
+   {
+    id: 5,
+    name: "Our Components",
+    path: "/components",
+  },
 ];
 
 const policyLinks = [
@@ -117,7 +122,7 @@ export const Footer = () => {
               </h2>
             </div>
             <Link
-              href="https://github.com/AbdulaleemMughal"
+              href="https://github.com/AbdulaleemMughal/100-React-Project-Frontend.git"
               target="_main"
               className="group bg-white p-4 flex items-center space-x-3 rounded-2xl shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:-translate-y-1"
             >

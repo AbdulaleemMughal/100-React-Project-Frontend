@@ -2,37 +2,28 @@
 
 import { Button } from "@/UI/Button";
 import { Logo } from "./Logo";
-import { MoveRight } from "lucide-react";
+import { Menu, MoveRight } from "lucide-react";
 import { useRouter } from "next/navigation";
-
-const headerNav = [
-  {
-    id: 1,
-    title: "Home",
-    type: "text",
-    path: "/",
-  },
-  {
-    id: 2,
-    title: "About",
-    type: "text",
-    path: "/about",
-  },
-  {
-    id: 3,
-    title: "All Projects",
-    type: "buttom",
-    path: "/projects",
-  },
-];
+import { headerNav } from "@/utils/headerNav";
+import { SidebarDrawer } from "@/UI/SidebarDrawer";
+import { useState } from "react";
 
 export const Header = () => {
   const router = useRouter();
+  const [openDrawer, setOpenDrawer] = useState<boolean>(false);
 
   return (
     <header className="flex justify-center bg-linear-to-r from-slate-50/95 via-white/95 to-blue-50/95 backdrop-blur-xl border-b border-gray-200/50 shadow-xl">
-      <div className="w-7xl py-4 px-8 flex items-center justify-between">
-        <Logo />
+      <div className="w-7xl py-4 flex items-center justify-between max-xl:px-5">
+        <span
+          className="p-1.5 border border-gray-400 rounded-md hidden max-lg:block"
+          onClick={() => setOpenDrawer(true)}
+        >
+          <Menu color="gray" size={24} />
+        </span>
+        <div className="max-lg:hidden">
+          <Logo />
+        </div>
         <div className="flex items-center space-x-1">
           {headerNav.map((nav) => {
             if (nav.type === "text") {
@@ -40,7 +31,7 @@ export const Header = () => {
                 <div
                   key={nav.id}
                   onClick={() => router.push(nav.path)}
-                  className="px-4 py-2 cursor-pointer text-gray-800 hover:text-blue-700 hover:bg-blue-100 font-[Inter] rounded-xl font-medium transition-all duration-300 max-sm:hidden inline-flex"
+                  className="px-4 py-2 cursor-pointer text-gray-800 hover:text-blue-700 hover:bg-blue-100 font-[Inter] rounded-xl font-medium transition-all duration-300 max-lg:hidden inline-flex"
                 >
                   {nav.title}
                 </div>
@@ -58,6 +49,7 @@ export const Header = () => {
           })}
         </div>
       </div>
+      <SidebarDrawer open={openDrawer} setOpen={setOpenDrawer} />
     </header>
   );
 };

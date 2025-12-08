@@ -9,14 +9,14 @@ const plateformCard = [
     iconColor: "#2475ff",
   },
   {
-    id: 1,
+    id: 2,
     title: "Learn by Doing",
     icon: Zap,
     desc: "Build real projects that you can add to your portfolio. Each project teaches practical skills you'll use in real-world development.",
     iconColor: "#00bf4b",
   },
   {
-    id: 1,
+    id: 3,
     title: "Learn by Doing",
     icon: BadgeCheck,
     desc: "Build real projects that you can add to your portfolio. Each project teaches practical skills you'll use in real-world development.",
@@ -40,7 +40,7 @@ export const PlateForm = () => {
         {plateformCard.map((card) => {
           const Icon = card.icon;
           return (
-            <div className="col-span-4 p-8 bg-white border border-white/30 rounded-3xl shadow-xl font-[Inter] max-lg:col-span-6 max-sm:col-span-12">
+            <div key={card.id} className="col-span-4 p-8 bg-white border border-white/30 rounded-3xl shadow-xl font-[Inter] max-lg:col-span-6 max-sm:col-span-12">
               <div
                 style={{ backgroundColor: card.iconColor }}
                 className="w-12 h-12 rounded-2xl flex justify-center items-center text-white"

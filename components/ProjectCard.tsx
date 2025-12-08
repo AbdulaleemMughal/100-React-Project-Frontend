@@ -35,7 +35,7 @@ export const ProjectCard = ({ data }: ProjectCardProps) => {
         </span>
       </div>
       <h3 className="text-lg font-bold text-gray-900 font-[Inter] mb-2 group-hover:text-blue-600">
-        {data.name}
+        {data.name.length > 20 ? data.name.slice(0, 21) + "..." : data.name}
       </h3>
       <p className="text-gray-600 text-sm mb-4 font-[Inter] line-clamp-3 leading-relaxed">
         {data.description}
@@ -47,7 +47,7 @@ export const ProjectCard = ({ data }: ProjectCardProps) => {
               key={lang}
               text={lang}
               variant={
-                lang === "html"
+                lang === "tailwind css"
                   ? "danger"
                   : lang === "css"
                   ? "primary"
