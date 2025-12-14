@@ -3,13 +3,14 @@
 import { Button } from "@/UI/Button";
 import { Logo } from "./Logo";
 import { Menu, MoveRight } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { headerNav } from "@/utils/headerNav";
 import { SidebarDrawer } from "@/UI/SidebarDrawer";
 import { useState } from "react";
 
 export const Header = () => {
   const router = useRouter();
+  const pathname = usePathname();
   const [openDrawer, setOpenDrawer] = useState<boolean>(false);
 
   return (
@@ -31,7 +32,11 @@ export const Header = () => {
                 <div
                   key={nav.id}
                   onClick={() => router.push(nav.path)}
-                  className="px-4 py-2 cursor-pointer text-gray-800 hover:text-blue-700 hover:bg-blue-100 font-[Inter] rounded-xl font-medium transition-all duration-300 max-lg:hidden inline-flex"
+                  className={`px-4 py-2 cursor-pointer hover:text-blue-700 hover:bg-blue-100 font-[Inter] rounded-xl font-medium transition-all duration-300 max-lg:hidden inline-flex ${
+                    pathname === nav.path
+                      ? "text-blue-700 bg-blue-100"
+                      : "text-gray-800"
+                  }`}
                 >
                   {nav.title}
                 </div>

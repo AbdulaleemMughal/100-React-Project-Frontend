@@ -53,9 +53,6 @@ export const Projects = () => {
                 : projects.map((project) => {
                     return <ProjectCard data={project} key={project._id} />;
                   })}
-              {/* {projects.map((project) => {
-                return <ProjectCard data={project} key={project._id} />;
-              })} */}
             </div>
           </div>
           <div className="mt-10">

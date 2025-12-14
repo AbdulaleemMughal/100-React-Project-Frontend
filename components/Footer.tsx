@@ -1,6 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { Logo } from "./Logo";
 import Link from "next/link";
 
@@ -25,7 +24,7 @@ const links = [
     name: "Contact",
     path: "/contact",
   },
-   {
+  {
     id: 5,
     name: "Our Components",
     path: "/components",
@@ -56,8 +55,6 @@ const policyLinks = [
 ];
 
 export const Footer = () => {
-  const router = useRouter();
-
   return (
     <footer className="pt-20 px-8 pb-12 border-t-4 border-blue-600 bg-[#e6e8e9]">
       <div className="w-7xl mx-auto max-xl:w-full">
@@ -71,7 +68,7 @@ export const Footer = () => {
                 Elevate your web development skills with our comprehensive
                 collection of{" "}
                 <span className="text-blue-600 font-semibold">
-                  100+ interactive JavaScript projects.
+                  100+ interactive React projects.
                 </span>{" "}
                 From beginner-friendly tutorials to advanced challenges.
               </p>
@@ -122,7 +119,7 @@ export const Footer = () => {
               </h2>
             </div>
             <Link
-              href="https://github.com/AbdulaleemMughal/100-React-Project-Frontend.git"
+              href="https://github.com/AbdulaleemMughal/100-React-Project.git"
               target="_main"
               className="group bg-white p-4 flex items-center space-x-3 rounded-2xl shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:-translate-y-1"
             >
